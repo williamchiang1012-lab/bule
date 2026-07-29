@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
  <title>線上抽卡平台（Online Oripa）商業提案書</title>
- <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  <style>
  :root {
@@ -15,6 +15,8 @@
  --accent: #f59e0b;
  --accent-glow: rgba(245, 158, 11, 0.5);
  --danger: #ef4444;
+ --purple: #a855f7;
+ --emerald: #10b981;
  --text-main: #f8fafc;
  --text-muted: #94a3b8;
  --border: rgba(59, 130, 246, 0.25);
@@ -39,6 +41,16 @@
  background-size: 50px 50px; z-index: 1; pointer-events: none;
  }
 
+ .bg-card-deco {
+ position: absolute; width: 240px; height: 340px;
+ background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
+ border: 2px solid var(--primary); border-radius: 16px;
+ box-shadow: 0 0 30px var(--primary-glow), 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(59, 130, 246, 0.3);
+ z-index: 2; pointer-events: none; opacity: 0.25;
+ }
+ .card-pos-1 { top: 8%; left: -60px; transform: rotate(18deg); }
+ .card-pos-2 { bottom: -40px; right: 5%; transform: rotate(-15deg); width: 260px; height: 370px; }
+
  .slide-container { width: 100%; height: 100%; position: relative; z-index: 10; }
  .slide { 
  width: 100%; height: 100%; position: absolute; top: 0; left: 0; 
@@ -47,6 +59,55 @@
  overflow-y: auto; -webkit-overflow-scrolling: touch;
  }
  .slide.active { display: flex; }
+
+ /* 🎬 過場章節頁 (Chapter Title Card) 專屬樣式 */
+ .slide-chapter-card {
+ background: radial-gradient(circle at center, rgba(30, 58, 138, 0.4) 0%, rgba(2, 5, 15, 0.95) 70%);
+ text-align: center;
+ justify-content: center !important;
+ border: 1px solid rgba(59, 130, 246, 0.3);
+ }
+
+ .chapter-number-badge {
+ background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+ color: #000;
+ font-weight: 900;
+ padding: 6px 20px;
+ border-radius: 50px;
+ font-size: 0.9rem;
+ letter-spacing: 2px;
+ text-transform: uppercase;
+ margin-bottom: 20px;
+ box-shadow: 0 0 20px var(--primary-glow);
+ }
+
+ .chapter-title {
+ font-size: 2.8rem;
+ font-weight: 900;
+ margin-bottom: 18px;
+ color: var(--text-main);
+ text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+ letter-spacing: 1px;
+ }
+ .chapter-title span {
+ color: var(--accent);
+ text-shadow: 0 0 20px var(--accent-glow);
+ }
+
+ .chapter-quote-box {
+ background: rgba(15, 23, 42, 0.8);
+ border: 1px solid rgba(59, 130, 246, 0.3);
+ border-left: 4px solid var(--accent);
+ padding: 20px 30px;
+ border-radius: 12px;
+ max-width: 800px;
+ font-size: 1.15rem;
+ font-weight: 600;
+ color: #e2e8f0;
+ line-height: 1.7;
+ box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+ backdrop-filter: blur(10px);
+ }
 
  .controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 100; }
  .btn {
@@ -90,6 +151,10 @@
  }
  .news-link:hover { color: #fff; border-bottom-color: #fff; }
 
+ .formula-box { background-color: rgba(2, 5, 15, 0.8); border-left: 3px solid var(--primary); padding: 8px 10px; border-radius: 0 6px 6px 0; margin-top: 8px; }
+ .formula-box .title { font-size: 0.75rem; font-weight: 700; color: #38bdf8; }
+ .formula-box .math { font-family: monospace; font-size: 0.85rem; color: var(--text-main); font-weight: 600; }
+
  .conclusion-box { background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%); border: 2px dashed var(--primary); border-radius: 12px; padding: 12px; position: relative; text-align: center; margin-top: 12px; width: 100%; max-width: 1150px; }
  .conclusion-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background-color: var(--accent); color: #000; font-weight: 800; padding: 2px 12px; border-radius: 50px; font-size: 0.7rem; }
  .conclusion-text { font-size: 0.9rem; font-weight: 700; color: #f8fafc; line-height: 1.4; }
@@ -103,6 +168,8 @@
  .slide { padding: 20px 15px 80px 15px; justify-content: flex-start; height: auto; min-height: 100vh; position: relative; }
  h1 { font-size: 2.2rem; }
  h2 { font-size: 1.3rem; }
+ .chapter-title { font-size: 1.8rem; }
+ .chapter-quote-box { font-size: 0.95rem; padding: 15px; }
  .subtitle { font-size: 0.8rem; margin-bottom: 12px; }
  .grid-2, .grid-3, .grid-4, .grid-news { grid-template-columns: 1fr !important; }
  .card { padding: 12px; }
@@ -114,9 +181,12 @@
 </head>
 <body>
 
+ <div class="bg-card-deco card-pos-1"></div>
+ <div class="bg-card-deco card-pos-2"></div>
+
  <div class="slide-container" id="slideContainer">
  
- <!-- Slide 1: 封面 -->
+ <!-- 🏠 Slide 1: 封面 -->
  <div class="slide active">
  <div class="badge">商業提案與投資規劃</div>
  <h1>線上抽卡 (Oripa) 平台</h1>
@@ -127,7 +197,16 @@
  </div>
  </div>
 
- <!-- 🌟 Slide 2: 全球與國內 10 大新聞焦點（含可點擊新聞連結） -->
+ <!-- 🎬 章節 01 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 01</div>
+ <div class="chapter-title">全網狂熱：<span>全球新聞與媒體焦點</span></div>
+ <div class="chapter-quote-box">
+ 「這不只是少數人的嗜好，而是主流資本與千億媒體爭相報導的現象級風口。」
+ </div>
+ </div>
+
+ <!-- Slide 2: 全球與國內 10 大新聞焦點 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-newspaper"></i> 國內外 10 大新聞焦點證明</div>
  <h2>全網狂熱：<span>新聞實證千億級卡牌風口</span></h2>
@@ -201,6 +280,15 @@
  </div>
  </div>
 
+ <!-- 🎬 章節 02 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 02</div>
+ <div class="chapter-title">商業入門：<span>投資人卡牌經濟學</span></div>
+ <div class="chapter-quote-box">
+ 「1 分鐘拆解：為什麼一張紙牌能擁有媲美黃金與精品的微型資產價值？」
+ </div>
+ </div>
+
  <!-- Slide 3: 投資人 1 分鐘科普 -->
  <div class="slide">
  <div class="badge"><i class="fa-solid fa-graduation-cap"></i> 投資人 1 分鐘科普</div>
@@ -227,6 +315,15 @@
  </div>
  </div>
 
+ <!-- 🎬 章節 03 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 03</div>
+ <div class="chapter-title">模式升級：<span>商業模式維度升級</span></div>
+ <div class="chapter-quote-box">
+ 「從傳統『線上一番賞』進化至『TCG 數位盲盒』——資金轉速拉高 10 倍的商業槓桿。」
+ </div>
+ </div>
+
  <!-- Slide 4: 傳統線上一番賞 vs. 數位卡牌 Oripa 升級 -->
  <div class="slide">
  <div class="badge badge-danger"><i class="fa-solid fa-layer-group"></i> 模式升級與商業突破</div>
@@ -250,6 +347,15 @@
  <div class="conclusion-box">
  <div class="conclusion-badge">商業模式終極比較</div>
  <div class="conclusion-text">「數位 Oripa 模式幫資金裝上<span>高回存、低物流、高週轉的數位槓桿</span>，將現金流週轉速度拉高至傳統一番賞的 <span>10 倍以上</span>！」</div>
+ </div>
+ </div>
+
+ <!-- 🎬 章節 04 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 04</div>
+ <div class="chapter-title">標竿剖析：<span>龍頭競品與爆款拆解</span></div>
+ <div class="chapter-quote-box">
+ 「結合 Clove 的『供應鏈誠信』與 DOPA! 的『多巴胺高頻引擎』，打造新世代爆款。」
  </div>
  </div>
 
@@ -295,6 +401,15 @@
  </div>
  </div>
 
+ <!-- 🎬 章節 05 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 05</div>
+ <div class="chapter-title">核心利潤：<span>動態精算與四重利潤</span></div>
+ <div class="chapter-quote-box">
+ 「受數學演算保護的利潤護城河：後台動態調控，創造 45%~65% 綜合毛利率。」
+ </div>
+ </div>
+
  <!-- Slide 7: 動態卡池三層配置 -->
  <div class="slide">
  <div class="badge badge-danger"><i class="fa-solid fa-sliders"></i> 靈活調控的動態盈利引擎</div>
@@ -320,6 +435,15 @@
  </div>
  </div>
 
+ <!-- 🎬 章節 06 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 06</div>
+ <div class="chapter-title">營運藍圖：<span>三階段營運推進規劃</span></div>
+ <div class="chapter-quote-box">
+ 「採取輕資產戰略，分階段驗證金流、社群裂變與自由交易市場生態。」
+ </div>
+ </div>
+
  <!-- Slide 8: 營運規劃 -->
  <div class="slide">
  <h2>三階段<span>營運與推進規劃</span></h2>
@@ -332,6 +456,15 @@
  <tr><td class="highlight">第三階段 (M10+)</td><td>推出玩家自由交易市場（Marketplace），轉型收取平台交易手續費。</td><td>跨國賽事冠名合作，建立娛樂生態壁壘。</td></tr>
  </tbody>
  </table>
+ </div>
+
+ <!-- 🎬 章節 07 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 07</div>
+ <div class="chapter-title">海外藍海：<span>東南亞與大馬市場崛起</span></div>
+ <div class="chapter-quote-box">
+ 「大馬作為東南亞 TCG 交易樞紐，實體生態已爆發，線上高階 Oripa 仍留巨大空白。」
+ </div>
  </div>
 
  <!-- Slide 9: 大馬與東南亞 -->
@@ -351,6 +484,15 @@
  </div>
  </div>
 
+ <!-- 🎬 章節 08 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 08</div>
+ <div class="chapter-title">全球願景：<span>全球千億級總體市場 (TAM)</span></div>
+ <div class="chapter-quote-box">
+ 「順應全球卡牌資產化、保管庫託管（Vault）與線上高頻交易的終極浪潮。」
+ </div>
+ </div>
+
  <!-- Slide 10: 全球 TCG 市場 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-globe"></i> 全球總體可尋址市場 (TAM)</div>
@@ -361,6 +503,15 @@
  <div class="card"><div class="card-number">02</div><h3>頂級 IP 全球加速滲透</h3><p>寶可夢、航海王、迪士尼等超級 IP 全球爆發，打破年齡限制，引爆全民收藏熱潮。</p></div>
  <div class="card"><div class="card-number">03</div><h3>線上抽卡 Oripa 數位化浪潮</h3><p>線上 Oripa 實現<strong>24小時全天候跨國抽卡</strong>，資金轉速拉高數十倍，引領全產業數位轉型。</p></div>
  <div class="card"><div class="card-number">04</div><h3>卡牌 Vault 託管與即時變現</h3><p>未來趨勢走向「實體卡保管庫託管」，玩家抽中後可放在雲端卡倉<strong>隨時二次轉售或一鍵熔斷</strong>。</p></div>
+ </div>
+ </div>
+
+ <!-- 🎬 章節 09 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 09</div>
+ <div class="chapter-title">合規防禦：<span>日本法人與實體隔離牆</span></div>
+ <div class="chapter-quote-box">
+ 「成立日本株式會社拉高信任天花板，配合封閉式暗倉形成 100% 營運安全隔離。」
  </div>
  </div>
 
@@ -377,6 +528,15 @@
  <div class="conclusion-box">
  <div class="conclusion-badge">合規結論</div>
  <div class="conclusion-text">「透過日本法人架構，我們建立了<span>無可摧毀的玩家信任感 + 100% 營運實體隔離牆</span>！」</div>
+ </div>
+ </div>
+
+ <!-- 🎬 章節 10 過場頁 -->
+ <div class="slide slide-chapter-card">
+ <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 10</div>
+ <div class="chapter-title">財務回報：<span>財務預測與投資回報 (ROI)</span></div>
+ <div class="chapter-quote-box">
+ 「總籌資需求 NT$350 萬，預計 4-5 個月損益平衡，首年預估 ROI 達 512%。」
  </div>
  </div>
 
