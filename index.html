@@ -9,7 +9,7 @@
  <style>
  :root {
  --bg-main: #02050f;
- --bg-card: rgba(15, 23, 42, 0.85);
+ --bg-card: rgba(15, 23, 42, 0.88);
  --primary: #3b82f6;
  --primary-glow: rgba(59, 130, 246, 0.6);
  --accent: #f59e0b;
@@ -26,7 +26,8 @@
 
  body {
  font-family: 'Lexend', 'Noto Sans TC', sans-serif;
- background-color: var(--bg-main);
+ /* 🎨 融合自訂熱鬧卡牌底圖 (bg-cards.jpg) 與霓虹漸層遮罩 */
+ background: linear-gradient(rgba(2, 5, 15, 0.85), rgba(2, 5, 15, 0.92)), url('bg-cards.jpg') center/cover no-repeat var(--bg-main);
  color: var(--text-main);
  overflow: hidden;
  width: 100vw;
@@ -62,7 +63,7 @@
 
  /* 🎬 過場章節頁 (Chapter Title Card) 專屬樣式 */
  .slide-chapter-card {
- background: radial-gradient(circle at center, rgba(30, 58, 138, 0.4) 0%, rgba(2, 5, 15, 0.95) 70%);
+ background: radial-gradient(circle at center, rgba(30, 58, 138, 0.5) 0%, rgba(2, 5, 15, 0.95) 70%);
  text-align: center;
  justify-content: center !important;
  border: 1px solid rgba(59, 130, 246, 0.3);
@@ -95,7 +96,7 @@
  }
 
  .chapter-quote-box {
- background: rgba(15, 23, 42, 0.8);
+ background: rgba(15, 23, 42, 0.85);
  border: 1px solid rgba(59, 130, 246, 0.3);
  border-left: 4px solid var(--accent);
  padding: 20px 30px;
