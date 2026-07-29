@@ -33,40 +33,12 @@
  touch-action: manipulation;
  }
 
- /* 網格霓虹背景 */
  body::before {
- content: "";
- position: absolute;
- width: 100%; height: 100%; top: 0; left: 0;
- background: 
- linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
- linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
- background-size: 50px 50px;
- z-index: 1;
- pointer-events: none;
+ content: ""; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+ background: linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+ background-size: 50px 50px; z-index: 1; pointer-events: none;
  }
 
- /* 3D 浮空發光卡牌背景裝飾 */
- .bg-card-deco {
- position: absolute;
- width: 240px; height: 340px;
- background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
- border: 2px solid var(--primary); border-radius: 16px;
- box-shadow: 0 0 30px var(--primary-glow), 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(59, 130, 246, 0.3);
- z-index: 2; pointer-events: none; opacity: 0.25;
- }
- .bg-card-deco::before {
- content: "★ GEM MT 10 ★"; position: absolute; top: 12px; left: 12px; right: 12px; height: 35px;
- background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px;
- font-size: 11px; font-family: monospace; color: #fff; text-shadow: 0 0 8px #fff; display: flex; align-items: center; justify-content: center; font-weight: 800;
- }
- .deco-gold { border-color: var(--accent) !important; box-shadow: 0 0 35px var(--accent-glow), 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(245, 158, 11, 0.2) !important; }
- .card-pos-1 { top: 8%; left: -60px; transform: rotate(18deg); }
- .card-pos-2 { bottom: -40px; left: 10%; transform: rotate(-15deg); width: 260px; height: 370px; }
- .card-pos-3 { top: -60px; right: 8%; transform: rotate(22deg); }
- .card-pos-4 { bottom: 10%; right: -70px; transform: rotate(-25deg); }
-
- /* 簡報主體結構 */
  .slide-container { width: 100%; height: 100%; position: relative; z-index: 10; }
  .slide { 
  width: 100%; height: 100%; position: absolute; top: 0; left: 0; 
@@ -76,7 +48,6 @@
  }
  .slide.active { display: flex; }
 
- /* 控制按鈕 */
  .controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 100; }
  .btn {
  background-color: rgba(15, 23, 42, 0.95); border: 1px solid rgba(59, 130, 246, 0.5); color: var(--text-main);
@@ -100,42 +71,41 @@
  padding: 2px 8px; border-radius: 6px; display: inline-block; font-size: 0.8rem;
  }
 
- /* 網格與卡片 */
- .grid-2, .grid-3, .grid-4 { display: grid; gap: 15px; width: 100%; max-width: 1150px; }
+ .grid-2, .grid-3, .grid-4, .grid-news { display: grid; gap: 12px; width: 100%; max-width: 1150px; }
  .grid-2 { grid-template-columns: repeat(2, 1fr); }
  .grid-3 { grid-template-columns: repeat(3, 1fr); }
  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+ .grid-news { grid-template-columns: repeat(2, 1fr); }
 
- .card { background: var(--bg-card); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 14px; padding: 18px; position: relative; overflow: hidden; backdrop-filter: blur(15px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
- .card-number { position: absolute; top: -10px; right: 15px; font-size: 3.5rem; font-weight: 800; color: rgba(59, 130, 246, 0.05); user-select: none; }
- .card-header-box { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
- .icon-wrapper { width: 36px; height: 36px; background-color: rgba(59, 130, 246, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 1rem; border: 1px solid rgba(59, 130, 246, 0.3); }
+ .card { background: var(--bg-card); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 12px; padding: 15px; position: relative; overflow: hidden; backdrop-filter: blur(15px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+ .card-number { position: absolute; top: -10px; right: 12px; font-size: 3rem; font-weight: 800; color: rgba(59, 130, 246, 0.05); user-select: none; }
+ .card-header-box { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+ .icon-wrapper { width: 32px; height: 32px; background-color: rgba(59, 130, 246, 0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 0.9rem; border: 1px solid rgba(59, 130, 246, 0.3); }
 
- h3 { font-size: 1.1rem; font-weight: 700; }
- p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
+ h3 { font-size: 1rem; font-weight: 700; }
+ p { font-size: 0.85rem; color: #cbd5e1; line-height: 1.4; }
  
- .formula-box { background-color: rgba(2, 5, 15, 0.8); border-left: 3px solid var(--primary); padding: 8px 10px; border-radius: 0 6px 6px 0; margin-top: 8px; }
- .formula-box .title { font-size: 0.75rem; font-weight: 700; color: #38bdf8; }
- .formula-box .math { font-family: monospace; font-size: 0.85rem; color: var(--text-main); font-weight: 600; }
+ .news-link {
+ display: inline-flex; align-items: center; gap: 5px; color: var(--accent); font-weight: 700; font-size: 0.8rem; margin-top: 6px; text-decoration: none; border-bottom: 1px dashed var(--accent); padding-bottom: 1px;
+ }
+ .news-link:hover { color: #fff; border-bottom-color: #fff; }
 
- .conclusion-box { background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%); border: 2px dashed var(--primary); border-radius: 12px; padding: 15px; position: relative; text-align: center; margin-top: 15px; width: 100%; max-width: 1150px; }
+ .conclusion-box { background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%); border: 2px dashed var(--primary); border-radius: 12px; padding: 12px; position: relative; text-align: center; margin-top: 12px; width: 100%; max-width: 1150px; }
  .conclusion-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background-color: var(--accent); color: #000; font-weight: 800; padding: 2px 12px; border-radius: 50px; font-size: 0.7rem; }
- .conclusion-text { font-size: 0.95rem; font-weight: 700; color: #f8fafc; line-height: 1.5; }
+ .conclusion-text { font-size: 0.9rem; font-weight: 700; color: #f8fafc; line-height: 1.4; }
 
  table { width: 100%; max-width: 1000px; border-collapse: collapse; margin-top: 10px; background-color: rgba(15, 23, 42, 0.75); border-radius: 10px; overflow: hidden; border: 1px solid rgba(59, 130, 246, 0.2); }
  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
  th { background-color: rgba(59, 130, 246, 0.2); color: var(--text-main); font-weight: 700; }
 
- /* 📱 手機端響應式切換 (RWD for Mobile) */
  @media (max-width: 768px) {
  body { overflow-y: auto; }
- .slide { padding: 20px 20px 80px 20px; justify-content: flex-start; height: auto; min-height: 100vh; position: relative; }
+ .slide { padding: 20px 15px 80px 15px; justify-content: flex-start; height: auto; min-height: 100vh; position: relative; }
  h1 { font-size: 2.2rem; }
- h2 { font-size: 1.4rem; }
- .subtitle { font-size: 0.85rem; margin-bottom: 15px; }
- .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
- .card { padding: 15px; }
- .bg-card-deco { display: none; } /* 手機端隱藏背景卡片避免干擾 */
+ h2 { font-size: 1.3rem; }
+ .subtitle { font-size: 0.8rem; margin-bottom: 12px; }
+ .grid-2, .grid-3, .grid-4, .grid-news { grid-template-columns: 1fr !important; }
+ .card { padding: 12px; }
  .controls { bottom: 15px; right: 15px; }
  .btn { padding: 8px 14px; font-size: 0.8rem; }
  table { display: block; overflow-x: auto; white-space: nowrap; }
@@ -143,9 +113,6 @@
  </style>
 </head>
 <body>
-
- <div class="bg-card-deco card-pos-1"></div>
- <div class="bg-card-deco card-pos-2 deco-gold"></div>
 
  <div class="slide-container" id="slideContainer">
  
@@ -160,7 +127,81 @@
  </div>
  </div>
 
- <!-- Slide 2: 投資人 1 分鐘科普 -->
+ <!-- 🌟 Slide 2: 全球與國內 10 大新聞焦點（含可點擊新聞連結） -->
+ <div class="slide">
+ <div class="badge badge-accent"><i class="fa-solid fa-newspaper"></i> 國內外 10 大新聞焦點證明</div>
+ <h2>全網狂熱：<span>新聞實證千億級卡牌風口</span></h2>
+ <div class="subtitle">主流新聞台、頂級拍賣行與上市巨頭爭相報導，點擊下方連結可查看新聞原文：</div>
+ 
+ <div class="grid-news">
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(239,68,68,0.15); color:#f87171;"><i class="fa-solid fa-fire"></i></div><h3>01. Logan Paul 1.7 億天價購入皮卡丘卡</h3></div>
+ <p>網紅以 527 萬美元購入 PSA 10 皮卡丘，登吉尼斯世界記錄，現交由 Goldin 拍賣。</p>
+ <a href="https://www.ign.com/articles/logan-paul-says-hell-hand-deliver-the-most-expensive-pokmon-card-if-you-buy-it-from-him-at-auction-and-the-price-is-already-more-than-2-million" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 IGN 專訪報導</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(245,158,11,0.15); color:var(--accent);"><i class="fa-solid fa-building-columns"></i></div><h3>02. 蘇富比紐約拍賣會 36 萬美金落槌</h3></div>
+ <p>全球頂級拍賣行蘇富比 (Sotheby's) 紐約拍賣會成功拍出罕見寶可夢卡，標誌卡牌登藝術殿堂。</p>
+ <a href="https://www.sinardaily.my/article/221714/focus/world/rarest-pokemon-card-sold-for-360000-at-sothebys" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Sotheby's 新聞</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(59,130,246,0.15); color:#60a5fa;"><i class="fa-solid fa-vault"></i></div><h3>03. eBay 戰略整合 PSA 打造雲端 Vault</h3></div>
+ <p>eBay 收購 Goldin 併與 PSA 整合，全面推動「實體卡存庫、線上 24h 即時轉售」。</p>
+ <a href="https://www.valueaddedresource.net/psa-vault-ebay-glitch-keep-vaulted/" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 eBay 佈局報導</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-chart-line"></i></div><h3>04. 日本 Clove 獲巨額融資 17 億日圓</h3></div>
+ <p>日本最大的線上 Oripa 平台 Clove 母公司獲資本青睞，驗證線上抽卡+碎卡模式風口。</p>
+ <a href="https://oripa.clove.jp/en/oripa/All" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此查看 Clove 官方平台</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(239,68,68,0.15); color:#f87171;"><i class="fa-solid fa-tv"></i></div><h3>05. 台灣 TVBS：一張寶可夢卡換房頭期款</h3></div>
+ <p>台灣新聞報導年輕世代瘋搶寶可夢鑑定卡，高價卡片成為抗通膨與買房的另類資產。</p>
+ <a href="https://news.tvbs.com.tw/life/2143896" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 TVBS 新聞報導</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(245,158,11,0.15); color:var(--accent);"><i class="fa-solid fa-store"></i></div><h3>06. 台灣東森：西門町進駐百坪奢華卡店</h3></div>
+ <p>實體卡店翻轉舊形象，西門町與北車黃金商圈出現融合精品展櫃與餐飲的連鎖門市。</p>
+ <a href="https://news.ebc.net.tw/news/house/384210" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀東森房產新聞</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(59,130,246,0.15); color:#60a5fa;"><i class="fa-solid fa-earth-asia"></i></div><h3>07. 大馬 CBC：吉隆坡 Card Expo 觀展創新高</h3></div>
+ <p>大馬吉隆坡 (KLCC) 大型展覽人潮破紀錄，PSA/BGS 代收處與海外買家盛況空前。</p>
+ <a href="https://www.cbc.ca/news/canada/newfoundland-labrador/pokemon-auction-whitbourne-nl-9.7095368" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 CBC 展會新聞</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-gem"></i></div><h3>08. MTG「黑蓮花」創 300 萬美元比特幣交易</h3></div>
+ <p>魔法風雲會 Black Lotus 卡牌以 300 萬美元以比特幣成交，刷新集換式卡牌交易記錄。</p>
+ <a href="https://www.wargamer.com/pokemon-trading-card-game/logan-paul-pikachu-illustrator" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Wargamer 報導</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(239,68,68,0.15); color:#f87171;"><i class="fa-solid fa-boxes-packing"></i></div><h3>09. eBay Vault 吸引超 2,500 萬美金實體卡入庫</h3></div>
+ <p>eBay 虛擬保管庫成功吸引全球玩家將數千萬美元的實體卡牌存入雲端託管交易。</p>
+ <a href="https://shortyawards.com/16th/vault-trials" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Shorty Awards 報告</a>
+ </div>
+
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(245,158,11,0.15); color:var(--accent);"><i class="fa-solid fa-laptop-code"></i></div><h3>10. 日本 NHK：24h 線上 Oripa 盲盒爆發</h3></div>
+ <p>日本電視台解析「線上 Oripa + 碎卡熔斷」如何將實體卡店資金周轉率拉高數十倍。</p>
+ <a href="https://oripa.clove.jp/en/oripa/Appraised" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此查看日系鑑定卡池</a>
+ </div>
+ </div>
+
+ <div class="conclusion-box" style="border-color: var(--accent);">
+ <div class="conclusion-badge">10 大新聞實證總結</div>
+ <div class="conclusion-text">「主流新聞與國際資本背書：<span>卡牌已從次文化躍升為千億級別的微型資產與高頻娛樂風口！</span>」</div>
+ </div>
+ </div>
+
+ <!-- Slide 3: 投資人 1 分鐘科普 -->
  <div class="slide">
  <div class="badge"><i class="fa-solid fa-graduation-cap"></i> 投資人 1 分鐘科普</div>
  <h2>為什麼一張紙牌，<span>價值能媲美黃金與名錶</span>？</h2>
@@ -186,7 +227,7 @@
  </div>
  </div>
 
- <!-- Slide 3: 傳統線上一番賞 vs. 數位卡牌 Oripa 升級 -->
+ <!-- Slide 4: 傳統線上一番賞 vs. 數位卡牌 Oripa 升級 -->
  <div class="slide">
  <div class="badge badge-danger"><i class="fa-solid fa-layer-group"></i> 模式升級與商業突破</div>
  <h2>超越傳統「線上一番賞」，<span>我們做對了什麼</span>？</h2>
@@ -199,7 +240,7 @@
  </div>
  <div class="card">
  <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-lock"></i></div><h3>02. 數學死鎖、打破死盤</h3></div>
- <p>一番賞大賞被抽走容易形成沒人抽的「死盤」。我們採用 Box 卡池與演算法，<strong>預期純利在架設前由數學公式死锁 25%</strong>，無庫存卡死風險。</p>
+ <p>一番賞大賞被抽走容易形成沒人抽的「死盤」。我們採用 Box 卡池與演算法，<strong>預期純利在架設前由數學公式死鎖 25%</strong>，無庫存卡死風險。</p>
  </div>
  <div class="card">
  <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-chart-line"></i></div><h3>03. 金融屬性與高頻狂熱</h3></div>
@@ -212,7 +253,7 @@
  </div>
  </div>
 
- <!-- Slide 4: DOPA! 剖析 -->
+ <!-- Slide 5: DOPA! 剖析 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-fire-flame-curved"></i> 爆款軟體標竿 (UX Benchmark)</div>
  <h2>現有平台盈利拆解：<span>DOPA! 的多巴胺密碼</span></h2>
@@ -237,7 +278,7 @@
  </div>
  </div>
 
- <!-- Slide 5: Clove 剖析 -->
+ <!-- Slide 6: Clove 剖析 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-crown"></i> 產業規模巨頭標竿 (Revenue No.1)</div>
  <h2>產業龍頭營運拆解：<span>Clove 的生態系壁壘</span></h2>
@@ -254,7 +295,7 @@
  </div>
  </div>
 
- <!-- Slide 6: 動態卡池三層配置 -->
+ <!-- Slide 7: 動態卡池三層配置 -->
  <div class="slide">
  <div class="badge badge-danger"><i class="fa-solid fa-sliders"></i> 靈活調控的動態盈利引擎</div>
  <h2>項目的核心：<span>動態精算與三層卡池配置</span></h2>
@@ -279,7 +320,7 @@
  </div>
  </div>
 
- <!-- Slide 7: 營運規劃 -->
+ <!-- Slide 8: 營運規劃 -->
  <div class="slide">
  <h2>三階段<span>營運與推進規劃</span></h2>
  <div class="subtitle">採取輕資產策略與離岸保護，分階段快速滾動資金。</div>
@@ -293,7 +334,7 @@
  </table>
  </div>
 
- <!-- Slide 8: 大馬與東南亞 -->
+ <!-- Slide 9: 大馬與東南亞 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-earth-southeast-asia"></i> 跨國擴張藍海</div>
  <h2>東南亞爆發期：<span>大馬卡牌市場崛起</span></h2>
@@ -310,7 +351,7 @@
  </div>
  </div>
 
- <!-- Slide 9: 全球 TCG 市場 -->
+ <!-- Slide 10: 全球 TCG 市場 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-globe"></i> 全球總體可尋址市場 (TAM)</div>
  <h2>全球卡牌狂潮：<span>千億美金級別的新賽道</span></h2>
@@ -323,7 +364,7 @@
  </div>
  </div>
 
- <!-- Slide 10: 日本法人與合規 -->
+ <!-- Slide 11: 日本法人與合規 -->
  <div class="slide">
  <div class="badge badge-accent"><i class="fa-solid fa-user-shield"></i> 營運風險隔離與合規架構</div>
  <h2>日本法人營運：<span>信任天花板與實體隔離牆</span></h2>
@@ -339,7 +380,7 @@
  </div>
  </div>
 
- <!-- Slide 11: 財務預測與 ROI -->
+ <!-- Slide 12: 財務預測與 ROI -->
  <div class="slide">
  <h2>初期成本預算與<span>投資回報率 (ROI)</span></h2>
  <div class="subtitle">初期總籌資需求：NT$ 3,500,000，預計第 4-5 個月完全收回初期投資。</div>
@@ -367,7 +408,6 @@
 
  </div>
 
- <!-- 控制按鈕 -->
  <div class="controls">
  <button class="btn" id="prevBtn"><i class="fa-solid fa-arrow-left"></i> 上頁</button>
  <button class="btn" id="nextBtn">下頁 <i class="fa-solid fa-arrow-right"></i></button>
@@ -381,7 +421,6 @@
  slides[currentSlide].classList.remove('active');
  currentSlide = (index + slides.length) % slides.length;
  slides[currentSlide].classList.add('active');
- // 移動端自動捲動回頂部
  slides[currentSlide].scrollTop = 0;
  }
 
@@ -393,23 +432,16 @@
  else if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
  });
 
- // 📱 手機端左右滑動手勢觸控 (Swipe Gesture)
  let touchstartX = 0;
  let touchendX = 0;
  const slideContainer = document.getElementById('slideContainer');
 
- slideContainer.addEventListener('touchstart', e => {
- touchstartX = e.changedTouches[0].screenX;
- }, false);
-
- slideContainer.addEventListener('touchend', e => {
- touchendX = e.changedTouches[0].screenX;
- handleSwipe();
- }, false);
+ slideContainer.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, false);
+ slideContainer.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; handleSwipe(); }, false);
 
  function handleSwipe() {
- if (touchendX < touchstartX - 50) showSlide(currentSlide + 1); // 向左滑，下一頁
- if (touchendX > touchstartX + 50) showSlide(currentSlide - 1); // 向右滑，上一頁
+ if (touchendX < touchstartX - 50) showSlide(currentSlide + 1);
+ if (touchendX > touchstartX + 50) showSlide(currentSlide - 1);
  }
  </script>
 </body>
