@@ -1,150 +1,416 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>藍天白雲電動車出租 | 綠能旅遊・輕鬆啟程</title>
-    <!-- Google 廣告官方強烈建議的 SEO 標籤 -->
-    <meta name="description" content="藍天白雲電動車出租，提供最新款、高性能的電動車租賃服務。手續簡便、價格透明，不論是商務出差還是小旅行，都是您的最佳綠能首選！立即加入 LINE 官方帳號預約享優惠。">
-    
-    <style>
-        :root {
-            --primary-color: #0076a3; /* 藍天藍 */
-            --secondary-color: #f4f9fc; /* 白雲背景 */
-            --accent-color: #06C755; /* LINE 綠色 */
-            --text-color: #333333;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ <title>線上抽卡平台（Online Oripa）商業提案書</title>
+ <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <style>
+ :root {
+ --bg-main: #02050f;
+ --bg-card: rgba(15, 23, 42, 0.85);
+ --primary: #3b82f6;
+ --primary-glow: rgba(59, 130, 246, 0.6);
+ --accent: #f59e0b;
+ --accent-glow: rgba(245, 158, 11, 0.5);
+ --danger: #ef4444;
+ --text-main: #f8fafc;
+ --text-muted: #94a3b8;
+ --border: rgba(59, 130, 246, 0.25);
+ }
 
-        body {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .container {
-            width: 100%;
-            max-width: 500px; /* 針對手機版最佳化 */
-            background: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-        }
+ body {
+ font-family: 'Lexend', 'Noto Sans TC', sans-serif;
+ background-color: var(--bg-main);
+ color: var(--text-main);
+ overflow: hidden;
+ width: 100vw;
+ height: 100vh;
+ position: relative;
+ touch-action: manipulation;
+ }
 
-        /* 頂部形象區 */
-        .header {
-            background: linear-gradient(135deg, #00a4e4, var(--primary-color));
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+ /* 網格霓虹背景 */
+ body::before {
+ content: "";
+ position: absolute;
+ width: 100%; height: 100%; top: 0; left: 0;
+ background: 
+ linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+ background-size: 50px 50px;
+ z-index: 1;
+ pointer-events: none;
+ }
 
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
+ /* 3D 浮空發光卡牌背景裝飾 */
+ .bg-card-deco {
+ position: absolute;
+ width: 240px; height: 340px;
+ background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.5) 100%);
+ border: 2px solid var(--primary); border-radius: 16px;
+ box-shadow: 0 0 30px var(--primary-glow), 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(59, 130, 246, 0.3);
+ z-index: 2; pointer-events: none; opacity: 0.25;
+ }
+ .bg-card-deco::before {
+ content: "★ GEM MT 10 ★"; position: absolute; top: 12px; left: 12px; right: 12px; height: 35px;
+ background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px;
+ font-size: 11px; font-family: monospace; color: #fff; text-shadow: 0 0 8px #fff; display: flex; align-items: center; justify-content: center; font-weight: 800;
+ }
+ .deco-gold { border-color: var(--accent) !important; box-shadow: 0 0 35px var(--accent-glow), 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(245, 158, 11, 0.2) !important; }
+ .card-pos-1 { top: 8%; left: -60px; transform: rotate(18deg); }
+ .card-pos-2 { bottom: -40px; left: 10%; transform: rotate(-15deg); width: 260px; height: 370px; }
+ .card-pos-3 { top: -60px; right: 8%; transform: rotate(22deg); }
+ .card-pos-4 { bottom: 10%; right: -70px; transform: rotate(-25deg); }
 
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
+ /* 簡報主體結構 */
+ .slide-container { width: 100%; height: 100%; position: relative; z-index: 10; }
+ .slide { 
+ width: 100%; height: 100%; position: absolute; top: 0; left: 0; 
+ padding: 30px 40px 80px 40px; display: none; flex-direction: column; 
+ justify-content: center; align-items: center; box-sizing: border-box; 
+ overflow-y: auto; -webkit-overflow-scrolling: touch;
+ }
+ .slide.active { display: flex; }
 
-        /* 核心行動呼籲區 (CTA) */
-        .cta-section {
-            padding: 30px 20px;
-            text-align: center;
-            background: #ffffff;
-        }
+ /* 控制按鈕 */
+ .controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 100; }
+ .btn {
+ background-color: rgba(15, 23, 42, 0.95); border: 1px solid rgba(59, 130, 246, 0.5); color: var(--text-main);
+ padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; backdrop-filter: blur(10px); font-size: 0.9rem;
+ }
+ .btn:hover, .btn:active { background-color: var(--primary); border-color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); }
 
-        .cta-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
+ .badge { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid var(--primary); padding: 5px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; box-shadow: 0 0 15px var(--primary-glow); }
+ .badge-danger { background-color: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid var(--danger); }
+ .badge-accent { background-color: rgba(245, 158, 11, 0.2); color: var(--accent); border: 1px solid var(--accent); }
 
-        /* 閃爍亮點標籤 */
-        .badge {
-            display: inline-block;
-            background-color: #ff4d4f;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
+ h1 { font-size: 3.2rem; font-weight: 900; margin-bottom: 15px; text-align: center; line-height: 1.2; }
+ h1 span { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
+ h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; width: 100%; text-align: left; }
+ h2 span { color: var(--primary); }
+ .subtitle { font-size: 1rem; color: var(--text-muted); text-align: center; max-width: 850px; line-height: 1.5; margin-bottom: 18px; }
 
-        /* 醒目的 LINE 按鈕 */
-        .line-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 16px 20px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
-            transition: transform 0.2s;
-        }
+ .glow-red-tag {
+ color: #ef4444; font-weight: 800; text-shadow: 0 0 12px rgba(239, 68, 68, 0.8);
+ background-color: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.5);
+ padding: 2px 8px; border-radius: 6px; display: inline-block; font-size: 0.8rem;
+ }
 
-        .line-btn:active {
-            transform: scale(0.98);
-        }
+ /* 網格與卡片 */
+ .grid-2, .grid-3, .grid-4 { display: grid; gap: 15px; width: 100%; max-width: 1150px; }
+ .grid-2 { grid-template-columns: repeat(2, 1fr); }
+ .grid-3 { grid-template-columns: repeat(3, 1fr); }
+ .grid-4 { grid-template-columns: repeat(2, 1fr); }
 
-        .line-btn svg {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-            fill: white;
-        }
+ .card { background: var(--bg-card); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 14px; padding: 18px; position: relative; overflow: hidden; backdrop-filter: blur(15px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+ .card-number { position: absolute; top: -10px; right: 15px; font-size: 3.5rem; font-weight: 800; color: rgba(59, 130, 246, 0.05); user-select: none; }
+ .card-header-box { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+ .icon-wrapper { width: 36px; height: 36px; background-color: rgba(59, 130, 246, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #60a5fa; font-size: 1rem; border: 1px solid rgba(59, 130, 246, 0.3); }
 
-        /* 服務特點區 */
-        .features {
-            padding: 20px;
-            background: #fafafa;
-            flex-grow: 1;
-        </style>
-        <!-- 以下為其餘網頁結構，為精簡長度此處先示意，直接幫您打包最精準的區塊 -->
-        <div class="container">
-            <header class="header">
-                <h1>藍天白雲電動車出租</h1>
-                <p>節能環保・低碳旅遊・輕鬆出發</p>
-            </header>
+ h3 { font-size: 1.1rem; font-weight: 700; }
+ p { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
+ 
+ .formula-box { background-color: rgba(2, 5, 15, 0.8); border-left: 3px solid var(--primary); padding: 8px 10px; border-radius: 0 6px 6px 0; margin-top: 8px; }
+ .formula-box .title { font-size: 0.75rem; font-weight: 700; color: #38bdf8; }
+ .formula-box .math { font-family: monospace; font-size: 0.85rem; color: var(--text-main); font-weight: 600; }
 
-            <section class="cta-section">
-                <span class="badge">🔥 填單預約再享限時租車優惠</span>
-                <p class="cta-title">專業客服線上 1 對 1 諮詢</p>
-                
-                <!-- ⚠️ 請將下方的 href 網址替換為您的 LINE 官方帳號連結 -->
-                <a href="https://line.me/R/ti/p/@您的LINE帳號" class="line-btn" target="_blank">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.025c-.053.303-.254 1.186 1.093.647 1.348-.539 7.274-4.283 9.922-7.33 1.932-2.126 2.024-4.249 2.024-5.367zm-15.632 2.52h-1.52v-3.722h1.52v3.722zm3.038 0h-1.464l-1.637-2.316v2.316h-1.46v-3.722h1.464l1.637 2.316v-2.316h1.46v3.722zm1.752-1.396h1.614v1.396h-3.134v-3.722h3.134v1.396h-1.614v.364h1.614v1.002h-1.614v.564zm4.212 1.396h-3.134v-3.722h1.52v2.326h1.614v1.396z"/>
-                    </svg>
-                    點我加 LINE 立即預約諮詢
-                </a>
-            </section>
+ .conclusion-box { background: linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%); border: 2px dashed var(--primary); border-radius: 12px; padding: 15px; position: relative; text-align: center; margin-top: 15px; width: 100%; max-width: 1150px; }
+ .conclusion-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background-color: var(--accent); color: #000; font-weight: 800; padding: 2px 12px; border-radius: 50px; font-size: 0.7rem; }
+ .conclusion-text { font-size: 0.95rem; font-weight: 700; color: #f8fafc; line-height: 1.5; }
 
-            <footer style="text-align: center; padding: 20px; font-size: 12px; color: #999; background: #ffffff;">
-                <p>© 2026 藍天白雲電動車出租 版權所有</p>
-                <p style="margin-top: 5px;">歡迎參考我們的 <a href="https://www.facebook.com/p/%E8%97%8D%E5%A4%A9%E7%99%BD%E9%9B%B2%E9%9B%BB%E5%8B%95%E8%BB%8A%E5%87%BA%E7%A7%9F-61581143634270/" target="_blank" style="color: #0076a3;">Facebook 粉絲專頁</a> 獲取更多最新資訊</p>
-            </footer>
-        </div>
-    </body>
+ table { width: 100%; max-width: 1000px; border-collapse: collapse; margin-top: 10px; background-color: rgba(15, 23, 42, 0.75); border-radius: 10px; overflow: hidden; border: 1px solid rgba(59, 130, 246, 0.2); }
+ th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+ th { background-color: rgba(59, 130, 246, 0.2); color: var(--text-main); font-weight: 700; }
+
+ /* 📱 手機端響應式切換 (RWD for Mobile) */
+ @media (max-width: 768px) {
+ body { overflow-y: auto; }
+ .slide { padding: 20px 20px 80px 20px; justify-content: flex-start; height: auto; min-height: 100vh; position: relative; }
+ h1 { font-size: 2.2rem; }
+ h2 { font-size: 1.4rem; }
+ .subtitle { font-size: 0.85rem; margin-bottom: 15px; }
+ .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
+ .card { padding: 15px; }
+ .bg-card-deco { display: none; } /* 手機端隱藏背景卡片避免干擾 */
+ .controls { bottom: 15px; right: 15px; }
+ .btn { padding: 8px 14px; font-size: 0.8rem; }
+ table { display: block; overflow-x: auto; white-space: nowrap; }
+ }
+ </style>
+</head>
+<body>
+
+ <div class="bg-card-deco card-pos-1"></div>
+ <div class="bg-card-deco card-pos-2 deco-gold"></div>
+
+ <div class="slide-container" id="slideContainer">
+ 
+ <!-- Slide 1: 封面 -->
+ <div class="slide active">
+ <div class="badge">商業提案與投資規劃</div>
+ <h1>線上抽卡 (Oripa) 平台</h1>
+ <div class="subtitle" style="font-size: 1.2rem; color: #60a5fa; font-weight: 600;">新世代 TCG 數位卡牌娛樂項目</div>
+ <div style="margin-top: 30px; text-align: center; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+ 報告人：項目籌備小組 &nbsp;|&nbsp; 2026年7月<br>
+ <span style="color: var(--danger); font-weight: 700;">【 商業機密 • 投資人審閱 】</span>
+ </div>
+ </div>
+
+ <!-- Slide 2: 投資人 1 分鐘科普 -->
+ <div class="slide">
+ <div class="badge"><i class="fa-solid fa-graduation-cap"></i> 投資人 1 分鐘科普</div>
+ <h2>為什麼一張紙牌，<span>價值能媲美黃金與名錶</span>？</h2>
+ <div class="subtitle">致對卡牌不熟悉的投資人：集換式卡牌（TCG）已演變為具備全球公訂價的「微型資產」。</div>
+ 
+ <div class="grid-3">
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-certificate"></i></div><h3>01. 全球權威鑑定 (PSA 制度)</h3></div>
+ <p>第三方機構（如美國 PSA）進行真偽防偽封裝與 1~10 分評級。<strong>PSA 10 滿分卡在全世界有即時公開的市場參考價與競標紀錄</strong>，如同黃金條塊與鑑定鑽石。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-gem"></i></div><h3>02. 絕版稀缺性 (Scarcity)</h3></div>
+ <p>頂級卡片全球限量發行且已絕版。<strong>「絕版限量 + 全球龐大粉絲需求」</strong>創造了強大的資產保值與升值空間。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-arrow-right-arrow-left"></i></div><h3>03. 什麼是 Oripa（線上盲盒）？</h3></div>
+ <p>Oripa 是商家將高價大獎（如十萬級別 PSA 10 卡）與一般卡打包成限量盲盒，<strong>讓玩家用小金額體驗「低成本博取高價資產」的娛樂快感</strong>。</p>
+ </div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">卡牌經濟學核心</div>
+ <div class="conclusion-text">「卡牌已成為<span>全球高流動性的微型資產</span>。我們做的是一套將實體資產『線上盲盒化與高頻交易化』的娛樂金融引擎！」</div>
+ </div>
+ </div>
+
+ <!-- Slide 3: 傳統線上一番賞 vs. 數位卡牌 Oripa 升級 -->
+ <div class="slide">
+ <div class="badge badge-danger"><i class="fa-solid fa-layer-group"></i> 模式升級與商業突破</div>
+ <h2>超越傳統「線上一番賞」，<span>我們做對了什麼</span>？</h2>
+ <div class="subtitle">「線上一番賞」打開了市場大門，而我們透過 TCG 數位卡牌將商業槓桿推向極致。</div>
+ 
+ <div class="grid-3">
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-box-open"></i></div><h3>01. 體積降維與成本魔術</h3></div>
+ <p>一番賞公仔體積大，倉儲物流負擔重。我們做高價 TCG 鑑定卡，體積小，且具備 <strong>75%~80% 碎卡回存率</strong>，多數線上熔斷循環，<strong>極大幅度降低物流開銷</strong>！</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-lock"></i></div><h3>02. 數學死鎖、打破死盤</h3></div>
+ <p>一番賞大賞被抽走容易形成沒人抽的「死盤」。我們採用 Box 卡池與演算法，<strong>預期純利在架設前由數學公式死锁 25%</strong>，無庫存卡死風險。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-chart-line"></i></div><h3>03. 金融屬性與高頻狂熱</h3></div>
+ <p>PSA 鑑定卡具備<strong>全球公訂價與二手交易二級市場金融屬性</strong>，吸引重度收藏與博弈屬性的高客單價玩家，創造數倍於一番賞的用戶黏著度！</p>
+ </div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">商業模式終極比較</div>
+ <div class="conclusion-text">「數位 Oripa 模式幫資金裝上<span>高回存、低物流、高週轉的數位槓桿</span>，將現金流週轉速度拉高至傳統一番賞的 <span>10 倍以上</span>！」</div>
+ </div>
+ </div>
+
+ <!-- Slide 4: DOPA! 剖析 -->
+ <div class="slide">
+ <div class="badge badge-accent"><i class="fa-solid fa-fire-flame-curved"></i> 爆款軟體標竿 (UX Benchmark)</div>
+ <h2>現有平台盈利拆解：<span>DOPA! 的多巴胺密碼</span></h2>
+ <div class="subtitle">DOPA! 是目前線上純軟體領域聲量與轉化率最高的爆款。我們繼承其三大核心軟體引擎：</div>
+ <div class="grid-3">
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-recycle"></i></div><h3>01. 碎卡熔斷 (Points Refund)</h3></div>
+ <p>抽中次級卡可「一鍵折算」退回 70%~90% 點數。消解玩家「損失厭惡」，讓玩家產生少許成本的錯覺，進而<strong>暴增 LTV 與 20 倍以上 GMV 流水轉速</strong>。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-boxes-stacked"></i></div><h3>02. 透明箱制大盤 (FOMO 搶購)</h3></div>
+ <p>即時公開「總盒數」與「大獎剩餘量」。剩餘盒數減少時觸發玩家 <strong>FOMO 心理</strong>，強烈吸引玩家進行「包池」清盤。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-calculator"></i></div><h3>03. RTP 精算與動態風控</h3></div>
+ <p>後台鎖定 75%~85% 期望值 (RTP)，<strong>天然鎖定 15%~25% 平台手續費毛利</strong>；結合實體卡牌批發價差，實現穩定利潤。</p>
+ </div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">DOPA! 模式精髓</div>
+ <div class="conclusion-text">「DOPA! 證明：<span>多巴胺娛樂體驗 + 類 Casino 的流水循環系統</span> = 極致的軟體用戶轉化率與資金滾動效率！」</div>
+ </div>
+ </div>
+
+ <!-- Slide 5: Clove 剖析 -->
+ <div class="slide">
+ <div class="badge badge-accent"><i class="fa-solid fa-crown"></i> 產業規模巨頭標竿 (Revenue No.1)</div>
+ <h2>產業龍頭營運拆解：<span>Clove 的生態系壁壘</span></h2>
+ <div class="subtitle">Clove（母公司 Trusthub）為日本規模第一的 Oripa 巨頭（單日營收破數億日圓、累計融資 17 億日圓）。其盈利維度：</div>
+ <div class="grid-4">
+ <div class="card"><div class="card-number">01</div><h3>實體門市與線上虛實聯動</h3><p>於秋葉原建立「Clove Base」實體旗艦店收購與寄賣二手卡牌，建立極強信任度，並將線下人流導至線上。</p></div>
+ <div class="card"><div class="card-number">02</div><h3>自有卡牌鑑定服務 (CGS)</h3><p>自建 CGS 鑑定機構，直接掌握鑑定規格與定價權，將鑑定費與大獎溢價一手包攬，創造極高毛利。</p></div>
+ <div class="card"><div class="card-number">03</div><h3>海外跨國金流與市場擴張</h3><p>佈局全球多語言與跨境支付網關，其<strong>海外營收佔比達 60%</strong>，驗證了全球對日本 TCG 鑑定卡的強烈需求。</p></div>
+ <div class="card"><div class="card-number">04</div><h3>高客單「奢華百萬卡池」</h3><p>主打歷史級神卡（如 PSA 10 初版噴火龍），單抽價值數萬日圓，專門吸納高資產大戶，創造龐大單日流水。</p></div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">雙雄對標戰略</div>
+ <div class="conclusion-text">「我們結合 <strong>Clove 的『供應鏈誠信』</strong> + <strong>DOPA! 的『高頻多巴胺與碎卡引擎』</strong>，打造新世代爆款平台！」</div>
+ </div>
+ </div>
+
+ <!-- Slide 6: 動態卡池三層配置 -->
+ <div class="slide">
+ <div class="badge badge-danger"><i class="fa-solid fa-sliders"></i> 靈活調控的動態盈利引擎</div>
+ <h2>項目的核心：<span>動態精算與三層卡池配置</span></h2>
+ <div class="subtitle">後台具備極高控制自由度，可彈性調控不同卡池的利潤底線： <span class="glow-red-tag">【利潤可由後台動態微調】</span></div>
+ <div class="grid-3">
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-bolt"></i></div><h3>01. 爆款引流池</h3></div>
+ <p>• <strong>RTP：</strong> 85% ~ 90%<br>• <strong>利潤底線：</strong> <strong>10% ~ 15%</strong><br>• <strong>目的：</strong> 吸引新用戶註冊、衝高首儲率。大獎率高，快速建立信任與多巴胺快感。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-coins"></i></div><h3>02. 標準常規池 (主力現金流)</h3></div>
+ <p>• <strong>RTP：</strong> 75% ~ 80%<br>• <strong>利潤底線：</strong> <strong>20% ~ 25%</strong><br>• <strong>目的：</strong> 平台日常營運的主力現金流來源，精準平衡玩家體驗與平台穩定淨利。</p>
+ </div>
+ <div class="card">
+ <div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-gem"></i></div><h3>03. 奢華大戶 / 1/2 對決池</h3></div>
+ <p>• <strong>RTP：</strong> 65% ~ 70%<br>• <strong>利潤底線：</strong> <strong>30% ~ 35%</strong><br>• <strong>目的：</strong> 針對高預算大戶設計（如數十萬 PSA 10 卡）。大獎誘惑強，平台鎖定高毛利。</p>
+ </div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">多重疊加綜合毛利</div>
+ <div class="conclusion-text">「動態卡池利潤 (15%~35%) + 碎卡熔斷沉澱 (15%) + 採購市價價差 (15%) = <span>平台真實綜合毛利率高達 45% ~ 65%！</span>」</div>
+ </div>
+ </div>
+
+ <!-- Slide 7: 營運規劃 -->
+ <div class="slide">
+ <h2>三階段<span>營運與推進規劃</span></h2>
+ <div class="subtitle">採取輕資產策略與離岸保護，分階段快速滾動資金。</div>
+ <table>
+ <thead><tr><th>階段</th><th>核心策略與系統建置</th><th>流量獲取與亮點</th></tr></thead>
+ <tbody>
+ <tr><td class="highlight">第一階段 (M1-M3)</td><td>• <strong>成立日本株式會社</strong>，打造日本正統 Oripa 品牌形象。<br>• 採用日本商務地址與第三方封閉暗倉 (Dark Warehouse) 隔離風險。<br>• 建立 Web 特效網頁版，驗證金流與高回存碎卡率。</td><td>與 KOL/TikTok 主播合作，以「日本直營、真實出貨」快速建立玩家信任。</td></tr>
+ <tr><td class="highlight">第二階段 (M4-M9)</td><td>升級為混合型 App，擴展至航海王、遊戲王。優化實體卡採購供應鏈。</td><td>發動推薦碼裂變，廣鋪「抽中大獎」短影音開箱切片，拉高曝光。</td></tr>
+ <tr><td class="highlight">第三階段 (M10+)</td><td>推出玩家自由交易市場（Marketplace），轉型收取平台交易手續費。</td><td>跨國賽事冠名合作，建立娛樂生態壁壘。</td></tr>
+ </tbody>
+ </table>
+ </div>
+
+ <!-- Slide 8: 大馬與東南亞 -->
+ <div class="slide">
+ <div class="badge badge-accent"><i class="fa-solid fa-earth-southeast-asia"></i> 跨國擴張藍海</div>
+ <h2>東南亞爆發期：<span>大馬卡牌市場崛起</span></h2>
+ <div class="subtitle">大馬已成為東南亞 TCG 卡牌交易樞紐。實體生態爆發，但線上高階 Oripa 仍留巨大空白！</div>
+ <div class="grid-4">
+ <div class="card"><div class="card-number">01</div><h3>大型 Card Expo 展會盛況</h3><p>吉隆坡大型卡牌展觀展人次創新高，<strong>PSA/BGS 等國際權威機構與海外買家設攤進駐</strong>。</p></div>
+ <div class="card"><div class="card-number">02</div><h3>實體門市現代奢華化</h3><p>大馬本地卡店進駐大型商場與熱門商圈，結合精品展櫃與 TikTok 24h 拆盒直播連鎖經營。</p></div>
+ <div class="card"><div class="card-number">03</div><h3>三語優勢與跨國樞紐</h3><p>大馬玩家兼具中、英、馬語優勢，完美接軌<strong>日文卡與英文卡雙重大盤</strong>，並吸引新加坡買家。</p></div>
+ <div class="card"><div class="card-number">04</div><h3>鑑定卡金融投資屬性</h3><p>受全球 PSA 熱潮帶動，大馬市場迅速轉化為「玩家+收藏家+投資客」結構，買氣極強。</p></div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">海外戰略契機</div>
+ <div class="conclusion-text">「本地驗證成功後，能以極低邊際成本推出中/英雙語版，<span>無縫搶佔東南亞線上 Oripa 市場空白</span>！」</div>
+ </div>
+ </div>
+
+ <!-- Slide 9: 全球 TCG 市場 -->
+ <div class="slide">
+ <div class="badge badge-accent"><i class="fa-solid fa-globe"></i> 全球總體可尋址市場 (TAM)</div>
+ <h2>全球卡牌狂潮：<span>千億美金級別的新賽道</span></h2>
+ <div class="subtitle">TCG 正經歷歷史性升級。全球市場規模破百億美金，並以 15%~18% CAGR 快速擴張：</div>
+ <div class="grid-4">
+ <div class="card"><div class="card-number">01</div><h3>卡牌金融化 (Alternative Asset)</h3><p>稀有 PSA 10 鑑定卡已被視為比肩腕錶與藝術品的<strong>微型替代資產</strong>，吸引全球投資人持有。</p></div>
+ <div class="card"><div class="card-number">02</div><h3>頂級 IP 全球加速滲透</h3><p>寶可夢、航海王、迪士尼等超級 IP 全球爆發，打破年齡限制，引爆全民收藏熱潮。</p></div>
+ <div class="card"><div class="card-number">03</div><h3>線上抽卡 Oripa 數位化浪潮</h3><p>線上 Oripa 實現<strong>24小時全天候跨國抽卡</strong>，資金轉速拉高數十倍，引領全產業數位轉型。</p></div>
+ <div class="card"><div class="card-number">04</div><h3>卡牌 Vault 託管與即時變現</h3><p>未來趨勢走向「實體卡保管庫託管」，玩家抽中後可放在雲端卡倉<strong>隨時二次轉售或一鍵熔斷</strong>。</p></div>
+ </div>
+ </div>
+
+ <!-- Slide 10: 日本法人與合規 -->
+ <div class="slide">
+ <div class="badge badge-accent"><i class="fa-solid fa-user-shield"></i> 營運風險隔離與合規架構</div>
+ <h2>日本法人營運：<span>信任天花板與實體隔離牆</span></h2>
+ <div class="subtitle">將營運主體設定為日本株式會社，完美兼顧玩家信任與營運隱私安全：</div>
+ <div class="grid-3">
+ <div class="card"><div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-certificate"></i></div><h3>01. 日本株式會社背書</h3></div><p>以日本東京/大阪法人名義營運，玩家天然信任其為「日本正統 Oripa 平台」，大幅拉高客單價。</p></div>
+ <div class="card"><div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-location-dot"></i></div><h3>02. 隱私與實體騷擾防禦</h3></div><p>官網公開地址為日本商務虛擬辦公室，<strong>完全隔離在地線下騷擾與極端玩家登門糾紛</strong>。</p></div>
+ <div class="card"><div class="card-header-box"><div class="icon-wrapper"><i class="fa-solid fa-warehouse"></i></div><h3>03. 封閉式第三方暗倉</h3></div><p>實體卡牌物流配合不對外公開的第三方倉儲直發（隱藏出貨地址），實現一體化匿名物流鏈。</p></div>
+ </div>
+ <div class="conclusion-box">
+ <div class="conclusion-badge">合規結論</div>
+ <div class="conclusion-text">「透過日本法人架構，我們建立了<span>無可摧毀的玩家信任感 + 100% 營運實體隔離牆</span>！」</div>
+ </div>
+ </div>
+
+ <!-- Slide 11: 財務預測與 ROI -->
+ <div class="slide">
+ <h2>初期成本預算與<span>投資回報率 (ROI)</span></h2>
+ <div class="subtitle">初期總籌資需求：NT$ 3,500,000，預計第 4-5 個月完全收回初期投資。</div>
+ <div class="grid-2">
+ <div class="card">
+ <h3 style="margin-bottom: 12px; color: #60a5fa;"><i class="fa-solid fa-coins"></i> 初期資金配置 (NTD)</h3>
+ <p>• 技術研發與特效網頁建置：<strong>500,000</strong></p>
+ <p>• 首批大獎鑑定卡採購周轉金：<strong>1,200,000</strong></p>
+ <p>• KOL 行銷與社群冷啟動預算：<strong>400,000</strong></p>
+ <p>• 日本法人設立與合規顧問：<strong>400,000</strong></p>
+ <p>• 每月基礎營運開銷預備：<strong>1,000,000</strong></p>
+ </div>
+ <div class="card" style="border-color: rgba(245,158,11,0.5);">
+ <h3 style="margin-bottom: 12px; color: var(--accent);"><i class="fa-solid fa-chart-pie"></i> 首年財務預測關鍵指標</h3>
+ <p>• 首年總營業額 (GMV) 預估：<strong class="highlight">NT$ 43,750,000</strong></p>
+ <p>• 首年預估總淨利潤：<strong class="highlight">NT$ 17,925,000</strong></p>
+ <p>• 損益平衡點 (BEP)：<strong>第 4-5 個月內達成</strong></p>
+ <div class="formula-box" style="border-left-color: var(--accent);">
+ <div class="title" style="color: var(--accent);">首年預估投資回報率</div>
+ <div class="math" style="font-size: 1rem;">ROI = (17,925,000 ÷ 3,500,000) × 100% ≈ <span style="color:var(--accent); font-size:1.2rem;">512%</span></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+
+ <!-- 控制按鈕 -->
+ <div class="controls">
+ <button class="btn" id="prevBtn"><i class="fa-solid fa-arrow-left"></i> 上頁</button>
+ <button class="btn" id="nextBtn">下頁 <i class="fa-solid fa-arrow-right"></i></button>
+ </div>
+
+ <script>
+ const slides = document.querySelectorAll('.slide');
+ let currentSlide = 0;
+
+ function showSlide(index) {
+ slides[currentSlide].classList.remove('active');
+ currentSlide = (index + slides.length) % slides.length;
+ slides[currentSlide].classList.add('active');
+ // 移動端自動捲動回頂部
+ slides[currentSlide].scrollTop = 0;
+ }
+
+ document.getElementById('nextBtn').addEventListener('click', () => { showSlide(currentSlide + 1); });
+ document.getElementById('prevBtn').addEventListener('click', () => { showSlide(currentSlide - 1); });
+
+ document.addEventListener('keydown', (e) => {
+ if (e.key === 'ArrowRight' || e.key === ' ') showSlide(currentSlide + 1);
+ else if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+ });
+
+ // 📱 手機端左右滑動手勢觸控 (Swipe Gesture)
+ let touchstartX = 0;
+ let touchendX = 0;
+ const slideContainer = document.getElementById('slideContainer');
+
+ slideContainer.addEventListener('touchstart', e => {
+ touchstartX = e.changedTouches[0].screenX;
+ }, false);
+
+ slideContainer.addEventListener('touchend', e => {
+ touchendX = e.changedTouches[0].screenX;
+ handleSwipe();
+ }, false);
+
+ function handleSwipe() {
+ if (touchendX < touchstartX - 50) showSlide(currentSlide + 1); // 向左滑，下一頁
+ if (touchendX > touchstartX + 50) showSlide(currentSlide - 1); // 向右滑，上一頁
+ }
+ </script>
+</body>
 </html>
