@@ -26,7 +26,6 @@
 
  body {
  font-family: 'Lexend', 'Noto Sans TC', sans-serif;
- /* 🎨 融合自訂熱鬧卡牌底圖 (bg-cards.jpg) 與霓虹漸層遮罩 */
  background: linear-gradient(rgba(2, 5, 15, 0.85), rgba(2, 5, 15, 0.92)), url('bg-cards.jpg') center/cover no-repeat var(--bg-main);
  color: var(--text-main);
  overflow: hidden;
@@ -61,7 +60,7 @@
  }
  .slide.active { display: flex; }
 
- /* 🎬 過場章節頁 (Chapter Title Card) 專屬樣式 */
+ /* 🎬 過場章節頁專屬樣式 */
  .slide-chapter-card {
  background: radial-gradient(circle at center, rgba(30, 58, 138, 0.5) 0%, rgba(2, 5, 15, 0.95) 70%);
  text-align: center;
@@ -71,43 +70,22 @@
 
  .chapter-number-badge {
  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
- color: #000;
- font-weight: 900;
- padding: 6px 20px;
- border-radius: 50px;
- font-size: 0.9rem;
- letter-spacing: 2px;
- text-transform: uppercase;
- margin-bottom: 20px;
+ color: #000; font-weight: 900; padding: 6px 20px; border-radius: 50px;
+ font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
  box-shadow: 0 0 20px var(--primary-glow);
  }
 
  .chapter-title {
- font-size: 2.8rem;
- font-weight: 900;
- margin-bottom: 18px;
- color: var(--text-main);
- text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
- letter-spacing: 1px;
+ font-size: 2.8rem; font-weight: 900; margin-bottom: 18px; color: var(--text-main);
+ text-shadow: 0 0 25px rgba(255, 255, 255, 0.3); letter-spacing: 1px;
  }
- .chapter-title span {
- color: var(--accent);
- text-shadow: 0 0 20px var(--accent-glow);
- }
+ .chapter-title span { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
 
  .chapter-quote-box {
- background: rgba(15, 23, 42, 0.85);
- border: 1px solid rgba(59, 130, 246, 0.3);
- border-left: 4px solid var(--accent);
- padding: 20px 30px;
- border-radius: 12px;
- max-width: 800px;
- font-size: 1.15rem;
- font-weight: 600;
- color: #e2e8f0;
- line-height: 1.7;
- box-shadow: 0 15px 35px rgba(0,0,0,0.5);
- backdrop-filter: blur(10px);
+ background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(59, 130, 246, 0.3);
+ border-left: 4px solid var(--accent); padding: 20px 30px; border-radius: 12px;
+ max-width: 800px; font-size: 1.15rem; font-weight: 600; color: #e2e8f0;
+ line-height: 1.7; box-shadow: 0 15px 35px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
  }
 
  .controls { position: fixed; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 100; }
@@ -194,7 +172,7 @@
  <div class="subtitle" style="font-size: 1.2rem; color: #60a5fa; font-weight: 600;">新世代 TCG 數位卡牌娛樂項目</div>
  <div style="margin-top: 30px; text-align: center; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
  報告人：項目籌備小組 &nbsp;|&nbsp; 2026年7月<br>
-<!-- <span style="color: var(--danger); font-weight: 700;">【 商業機密 • 投資人審閱 】</span>-->
+
  </div>
  </div>
 
@@ -216,26 +194,26 @@
  <div class="grid-news">
  <div class="card">
  <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(239,68,68,0.15); color:#f87171;"><i class="fa-solid fa-fire"></i></div><h3>01. Logan Paul 1.7 億天價購入皮卡丘卡</h3></div>
- <p>網紅以 527 萬美元購入 PSA 10 皮卡丘，登吉尼斯世界記錄，現交由 Goldin 拍賣。</p>
- <a href="https://www.ign.com/articles/logan-paul-says-hell-hand-deliver-the-most-expensive-pokmon-card-if-you-buy-it-from-him-at-auction-and-the-price-is-already-more-than-2-million" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 IGN 專訪報導</a>
+ <p>網紅以 527 萬美元購入 PSA 10 皮卡丘，創吉尼斯世界紀錄並戴上 WWE 擂台。</p>
+ <a href="https://www.guinnessworldrecords.com/news/2022/4/logan-paul-wears-5-25m-pokemon-card-at-wrestlemania-698188" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀吉尼斯紀錄報導</a>
  </div>
 
  <div class="card">
  <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(245,158,11,0.15); color:var(--accent);"><i class="fa-solid fa-building-columns"></i></div><h3>02. 蘇富比紐約拍賣會 36 萬美金落槌</h3></div>
  <p>全球頂級拍賣行蘇富比 (Sotheby's) 紐約拍賣會成功拍出罕見寶可夢卡，標誌卡牌登藝術殿堂。</p>
- <a href="https://www.sinardaily.my/article/221714/focus/world/rarest-pokemon-card-sold-for-360000-at-sothebys" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Sotheby's 新聞</a>
+ <a href="https://www.sothebys.com/en/buy/auction/2024/fine-books-and-manuscripts-including-americana/pikachu-illustrator-promo-card-1998" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Sotheby's 官方紀錄</a>
  </div>
 
  <div class="card">
  <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(59,130,246,0.15); color:#60a5fa;"><i class="fa-solid fa-vault"></i></div><h3>03. eBay 戰略整合 PSA 打造雲端 Vault</h3></div>
  <p>eBay 收購 Goldin 併與 PSA 整合，全面推動「實體卡存庫、線上 24h 即時轉售」。</p>
- <a href="https://www.valueaddedresource.net/psa-vault-ebay-glitch-keep-vaulted/" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 eBay 佈局報導</a>
+ <a href="https://www.ebayinc.com/stories/news/ebay-goldin-and-psa-announce-agreements-to-enhance-collectible-trading-card-experience/" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 eBay 官方新聞稿</a>
  </div>
 
  <div class="card">
- <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-chart-line"></i></div><h3>04. 日本 Clove 獲巨額融資 17 億日圓</h3></div>
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-chart-line"></i></div><h3>04. 日本 Clove 獲巨額融資新聞</h3></div>
  <p>日本最大的線上 Oripa 平台 Clove 母公司獲資本青睞，驗證線上抽卡+碎卡模式風口。</p>
- <a href="https://oripa.clove.jp/en/oripa/All" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此查看 Clove 官方平台</a>
+ <a href="https://prtimes.jp/main/html/rd/p/000000008.000088910.html" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀日媒融資報導</a>
  </div>
 
  <div class="card">
@@ -251,27 +229,27 @@
  </div>
 
  <div class="card">
- <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(59,130,246,0.15); color:#60a5fa;"><i class="fa-solid fa-earth-asia"></i></div><h3>07. 大馬 CBC：吉隆坡 Card Expo 觀展創新高</h3></div>
- <p>大馬吉隆坡 (KLCC) 大型展覽人潮破紀錄，PSA/BGS 代收處與海外買家盛況空前。</p>
- <a href="https://www.cbc.ca/news/canada/newfoundland-labrador/pokemon-auction-whitbourne-nl-9.7095368" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 CBC 展會新聞</a>
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(59,130,246,0.15); color:#60a5fa;"><i class="fa-solid fa-earth-asia"></i></div><h3>07. 大馬吉隆坡 Card Expo 觀展創新高</h3></div>
+ <p>大馬吉隆坡大型展覽人潮破紀錄，PSA/BGS 代收處與海外買家盛況空前。</p>
+ <a href="https://www.thestar.com.my/metro/metro-news/2023/11/04/card-collectors-gather-for-expo" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 The Star 報導</a>
  </div>
 
  <div class="card">
- <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-gem"></i></div><h3>08. MTG「黑蓮花」創 300 萬美元比特幣交易</h3></div>
- <p>魔法風雲會 Black Lotus 卡牌以 300 萬美元以比特幣成交，刷新集換式卡牌交易記錄。</p>
- <a href="https://www.wargamer.com/pokemon-trading-card-game/logan-paul-pikachu-illustrator" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Wargamer 報導</a>
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(16,185,129,0.15); color:#10b981;"><i class="fa-solid fa-gem"></i></div><h3>08. MTG「黑蓮花」創 300 萬美元交易紀錄</h3></div>
+ <p>魔法風雲會 Alpha Black Lotus 卡牌以 300 萬美元成交，刷新集換式卡牌歷史記錄。</p>
+ <a href="https://www.ign.com/articles/magic-the-gathering-black-lotus-card-sells-for-record-shattering-3-million" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 IGN 完整報導</a>
  </div>
 
  <div class="card">
- <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(239,68,68,0.15); color:#f87171;"><i class="fa-solid fa-boxes-packing"></i></div><h3>09. eBay Vault 吸引超 2,500 萬美金實體卡入庫</h3></div>
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(239,68,68,0.15); color:#f87171;"><i class="fa-solid fa-boxes-packing"></i></div><h3>09. eBay Vault 吸引超數千萬美金實體卡入庫</h3></div>
  <p>eBay 虛擬保管庫成功吸引全球玩家將數千萬美元的實體卡牌存入雲端託管交易。</p>
- <a href="https://shortyawards.com/16th/vault-trials" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Shorty Awards 報告</a>
+ <a href="https://shortyawards.com/16th/vault-trials" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此閱讀 Shorty Awards 分析</a>
  </div>
 
  <div class="card">
- <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(245,158,11,0.15); color:var(--accent);"><i class="fa-solid fa-laptop-code"></i></div><h3>10. 日本 NHK：24h 線上 Oripa 盲盒爆發</h3></div>
- <p>日本電視台解析「線上 Oripa + 碎卡熔斷」如何將實體卡店資金周轉率拉高數十倍。</p>
- <a href="https://oripa.clove.jp/en/oripa/Appraised" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此查看日系鑑定卡池</a>
+ <div class="card-header-box"><div class="icon-wrapper" style="background-color:rgba(245,158,11,0.15); color:var(--accent);"><i class="fa-solid fa-laptop-code"></i></div><h3>10. 日本 24h 線上 Oripa 盲盒（Clove 平台）</h3></div>
+ <p>日系線上 Oripa + 碎卡熔斷模式，展示將實體卡店資金周轉率拉高數十倍的平台實例。</p>
+ <a href="https://oripa.clove.jp/" target="_blank" class="news-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> 點此查看 Clove 官方平台</a>
  </div>
  </div>
 
@@ -284,7 +262,7 @@
  <!-- 🎬 章節 02 過場頁 -->
  <div class="slide slide-chapter-card">
  <div class="chapter-number-badge"><i class="fa-solid fa-play"></i> CHAPTER 02</div>
- <div class="chapter-title"><span>卡牌經濟學</span></div>
+ <div class="chapter-title"><span>投資人卡牌經濟學</span></div>
  <div class="chapter-quote-box">
  「1 分鐘拆解：為什麼一張紙牌能擁有媲美黃金與精品的微型資產價值？」
  </div>
